@@ -53,14 +53,9 @@ string BlockSolver::solve(string input)
     while (std::getline(f, line)) {
         if(i==0) {
             n=stoul(line); 
-            cout << "n converted: " << n << endl;
         } else {
-            cout << "l: " << line << endl;
             string c = line.substr(0,line.find(' '));
             string s = line.substr(line.find(' ')+1);
-
-            std::cout << "c: " << c << std::endl;
-            std::cout << "s: " << s << std::endl;
 
             blocks[i-1].type = c;
             blocks[i-1].size = stoul(s);
@@ -68,20 +63,9 @@ string BlockSolver::solve(string input)
         i++;
     }
 
-    //int n = sizeof(arr) / sizeof(arr[0]);
-
-    cout << "Blocks unsorted : \n";
-    for (uint i = 0; i < n; i++) { 
-        cout << "[" << blocks[i].type << "," 
-            << blocks[i].size << "] " << endl;
-    }
- 
     sort(blocks, blocks + n, compareBlocks);
  
-    cout << "Blocks sorted : \n";
     for (uint i = 0; i < n; i++) {
-        cout << "[" << blocks[i].type << "," 
-            << blocks[i].size << "] " << endl;
 
         if(i != 0) {
             if(blocks[i].type == "cylinder"
